@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>solution</title>
+
+
+</head>
+<body style = "margin: 0;">
+
+	<canvas id = "canvas" style = "display: block;">your browser not potdergevat my proekt</canvas>
+
+	<script type="text/javaScript">
+		
+		//conect canvas
+		var
+			canv = document.getElementById('canvas'),
+			ctx  = canv.getContext('2d');
+			isMouseDown = false;
+
+
+		canv.width = window.innerWidth;
+		canv.height = window.innerHeight;
+		
+		//code
+		
+		canv.addEventListener("mousedown", function(){
+			isMouseDown = true;
+		});
+
+		canv.addEventListener("mouseup", function(){
+			isMouseDown = false;
+			ctx.beginPath();
+		});
+
+		ctx.lineWidth = 10;
+
+		canv.addEventListener("mousemove", function(e) {
+
+			if( isMouseDown ){
+			
+				ctx.lineTo(e.clientX, e.clientY);
+				ctx.stroke();
+
+				ctx.beginPath();
+				ctx.arc(e.clientX, e.clientY, 5, 0, Math.PI * 2);
+				ctx.fill();
+
+				ctx.beginPath();
+				ctx.moveTo(e.clientX, e.clientY);
+			}
+
+		});
+
+		document.addEventListener("keydown", function(e){
+			
+			//repalay
+			if(e.keyCode == 82){
+
+			}
+
+			//save
+			if(e.keyCode == 83){
+
+			}
+
+			//clear
+			if(e.keyCode == 67){
+				canv.clear();
+			}
+
+		});
+
+
+	</script>
+
+</body>
+</html>
