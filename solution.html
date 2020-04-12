@@ -7,7 +7,9 @@
 </head>
 <body style = "margin: 0;">
 
-	<canvas id = "canvas" style = "display: block;">your browser not potdergevat my proekt</canvas>
+	
+
+	<canvas id = "canvas" style = "display: block; margin-top: 20px;">your browser not potdergevat my proekt</canvas>
 
 	<script type="text/javaScript">
 		
@@ -16,13 +18,15 @@
 			canv = document.getElementById('canvas'),
 			ctx  = canv.getContext('2d');
 			isMouseDown = false;
+			cords = [];
+			sizeMouse = 5;
+			sizeArc = 10
 
 
 		canv.width = window.innerWidth;
 		canv.height = window.innerHeight;
 		
 		//code
-		
 		canv.addEventListener("mousedown", function(){
 			isMouseDown = true;
 		});
@@ -30,19 +34,23 @@
 		canv.addEventListener("mouseup", function(){
 			isMouseDown = false;
 			ctx.beginPath();
+			
+			cords.push('mouseup');
 		});
 
-		ctx.lineWidth = 10;
+		ctx.lineWidth = sizeArc;
 
 		canv.addEventListener("mousemove", function(e) {
 
 			if( isMouseDown ){
 			
+				
+				cords.push([e.clientX, e.clientY]);
 				ctx.lineTo(e.clientX, e.clientY);
 				ctx.stroke();
-
-				ctx.beginPath();
-				ctx.arc(e.clientX, e.clientY, 5, 0, Math.PI * 2);
+				ctx.beginPath();	
+				
+				ctx.arc(e.clientX, e.clientY, sizeMouse, 0, Math.PI * 2);
 				ctx.fill();
 
 				ctx.beginPath();
@@ -51,21 +59,93 @@
 
 		});
 
+		//save pikch
+
+		function save() {
+			localStorage.setItem('cords', JSON.stringify(cords));
+		}
+
+		//clear sheet
+
+		 function clear() {
+
+		 	ctx.fillStyle = 'white';
+		 	ctx.fillRect(0, 0, canv.width, canv.height);
+
+		 	ctx.beginPath();
+		 	ctx.fillStyle = 'black';
+
+		 }
+
+		 //replay img
+
+		 function replay() {
+		 	var
+		 		timer = setInterval( function() {
+
+		 			if( !cords.length ){
+		 				
+		 				clearInterval(timer);
+		 				ctx.beginPath();
+		 				return;
+		 			}
+
+		 			var 
+		 				crd = cords.shift(),
+		 				e = {
+		 					clientX: crd["0"],
+		 					clientY: crd["1"]
+		 				};
+
+		 		
+		 		//cords.push([e.clientX, e.clientY]);
+				ctx.lineTo(e.clientX, e.clientY);
+				ctx.stroke();
+				ctx.beginPath();
+
+				ctx.arc(e.clientX, e.clientY, sizeMouse, 0, Math.PI * 2);
+				ctx.fill();
+
+				ctx.beginPath();
+				ctx.moveTo(e.clientX, e.clientY);
+		 		}, 10);
+		 }
+
 		document.addEventListener("keydown", function(e){
 			
-			//repalay
-			if(e.keyCode == 82){
+			//console.log(e.keyCode);
+			//replay
+			if( e.keyCode == 82 ) {
+				console.log("Repalaing...");
+			
+				cords = JSON.parse(localStorage.getItem('cords'));
 
+				clear();
+				replay();
 			}
 
 			//save
-			if(e.keyCode == 83){
-
+			if( e.keyCode == 83 ) {
+				save();
+				console.log("saved");
 			}
 
 			//clear
-			if(e.keyCode == 67){
-				canv.clear();
+			if( e.keyCode == 67 ) {
+				clear();
+				console.log("Cleared");
+			}
+
+			//increase sizeMouse
+			if ( e.keyCode == 38 ) {
+				sizeMouse++;
+				sizeArc += 3;
+			}
+
+			//reduce sizeMouse
+			if( e.keyCode == 40 ){
+				sizeMouse--;
+				sizeArc -= 3;
 			}
 
 		});
