@@ -55,13 +55,17 @@ $('document').ready(function(){
 			localStorage.setItem('cords', JSON.stringify(cords));
 		}
 		//clear sheet
-		 function clear() {
+		 function clear(a) {
 
 		 	ctx.fillStyle = 'white';
 		 	ctx.fillRect(0, 0, canv.width, canv.height);
 
 		 	ctx.beginPath();
 		 	ctx.fillStyle = 'black';
+		 	
+		 	if( a ){
+		 		cords = [];
+		 	}
 
 		 }
 		 //replay img
@@ -104,7 +108,7 @@ $('document').ready(function(){
 			switch( e.keyCode ){
 				//clear
 				case 67:
-					clear();
+					clear(true);
 					console.log("Cleared");
 					break;
 				//save
@@ -118,7 +122,7 @@ $('document').ready(function(){
 			
 					cords = JSON.parse(localStorage.getItem('cords'));
 
-					clear();
+					clear(false);
 					replay();
 					break;
 				//increase sizeMouse
