@@ -76,9 +76,9 @@ canvas {
 
 	color: green;
 	display: block;
-	transform: rotate(90deg);
+	transform: rotate(-90deg);
 	position: absolute;
-	margin-left: 430px;
+	margin-left: 430px; /*<img src = "img/copy.jpg" height = "50px" width = "50px"> <img src = "img/trash.jpg" height = "60px" width = "50px">*/
 	margin-top: 0px;
 	width: 90px;
 
@@ -93,6 +93,7 @@ canvas {
 	border: 2px solid white;
 	border-radius: 5px;
 	color: white;
+	margin-top: 8px;
 
 }
 
