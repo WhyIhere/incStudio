@@ -11,13 +11,29 @@ $('document').ready(function(){
 			isMouseMove = false;
 			x = 7;
 			y = 110;
-
-
+			colors = [];
+			buttonTriger = 19;
 
 		canv.width = window.innerWidth * 0.99;
 		canv.height = window.innerHeight * 0.835;
 		
 		//code
+		function sort(a){
+			 
+			 let b;
+
+			for (var i = 0; i < 21; i++) {
+				b = document.getElementById('CB' + i);
+				a[i] = b.getAttribute('style').slice(18);
+			}
+
+			return a;
+		}
+
+		sort(colors);
+
+
+		//trigers on down
 		canv.addEventListener("mousedown", function(){
 			isMouseDown = true;
 		});
@@ -28,7 +44,7 @@ $('document').ready(function(){
 			
 			cords.push('mouseup');
 		});
-
+		//trigers on that mouse is located in canvas 
 		$('canvas').mouseenter(function(e){
 			isMouseMove = true;
 		});
@@ -37,17 +53,19 @@ $('document').ready(function(){
 			isMouseDown = false;
 			ctx.beginPath();
 		});	
-
+		//daraw
 		canv.addEventListener("mousemove", function(e) {
 
 			if(isMouseMove && isMouseDown){
 
 				cords.push([e.clientX - x, e.clientY - y]);
+				ctx.strokeStyle = colors[buttonTriger];
 				ctx.lineWidth = sizeMouse * 2;
 				ctx.lineTo(e.clientX - x, e.clientY - y);
 				ctx.stroke();
 				ctx.beginPath();	
 				
+				ctx.fillStyle = colors[buttonTriger];
 				ctx.arc(e.clientX - x, e.clientY - y, sizeMouse, 0, Math.PI * 2);
 				ctx.fill();
 
@@ -68,7 +86,7 @@ $('document').ready(function(){
 		 	ctx.fillRect(0, 0, canv.width, canv.height);
 
 		 	ctx.beginPath();
-		 	ctx.fillStyle = 'black';
+		 	ctx.fillStyle = colors[buttonTriger];
 		 	
 		 	if( a ){
 		 		cords = [];

@@ -78,7 +78,7 @@ canvas {
 	display: block;
 	transform: rotate(-90deg);
 	position: absolute;
-	margin-left: 430px; /*<img src = "img/copy.jpg" height = "50px" width = "50px"> <img src = "img/trash.jpg" height = "60px" width = "50px">*/
+	margin-left: 430px;
 	margin-top: 0px;
 	width: 90px;
 
