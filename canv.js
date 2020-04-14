@@ -11,8 +11,8 @@ $('document').ready(function(){
 			isMouseMove = false;
 
 
-		canv.width = 900;
-		canv.height = 500;
+		canv.width = window.innerWidth * 0.99;
+		canv.height = window.innerHeight * 0.835;
 		
 		//code
 		canv.addEventListener("mousedown", function(){
@@ -35,17 +35,17 @@ $('document').ready(function(){
 
 			if(isMouseMove && isMouseDown){
 			
-				cords.push([e.clientX - 251, e.clientY - 101]);
+				cords.push([e.clientX , e.clientY - 125]);
 				ctx.lineWidth = sizeMouse * 2;
-				ctx.lineTo(e.clientX - 251, e.clientY - 101);
+				ctx.lineTo(e.clientX , e.clientY - 125);
 				ctx.stroke();
 				ctx.beginPath();	
 				
-				ctx.arc(e.clientX - 251, e.clientY - 101, sizeMouse, 0, Math.PI * 2);
+				ctx.arc(e.clientX, e.clientY - 125, sizeMouse, 0, Math.PI * 2);
 				ctx.fill();
 
 				ctx.beginPath();
-				ctx.moveTo(e.clientX - 251, e.clientY - 101);
+				ctx.moveTo(e.clientX, e.clientY - 125);
 			}
 
 		});
