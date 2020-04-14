@@ -32,7 +32,11 @@ $('document').ready(function(){
 		$('canvas').mouseenter(function(e){
 			isMouseMove = true;
 		});
-		$('canvas').mouseleave(function(e){isMouseMove = false;});	
+		$('canvas').mouseleave(function(e){
+			isMouseMove = false;
+			isMouseDown = false;
+			ctx.beginPath();
+		});	
 
 		canv.addEventListener("mousemove", function(e) {
 
