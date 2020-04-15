@@ -1,13 +1,10 @@
-#inc 
-this project used hotkey
+#ЫЫЫЫЫ
 
-c - clear list
+зачем
+?
 
-s - save in local storage
+на что ты тратишь свою жизнь?
 
-r - replaying from local storage
+в чём смысл?
 
-up arrow/down arrow - increase/reduce size mouse
-
-right/left arrow - increase/reduce speed replaying
- 
+(why? what do you spend your life on? in what meaning?)
