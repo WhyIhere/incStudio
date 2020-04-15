@@ -143,12 +143,12 @@ $('document').ready(function(){
 		 	range = document.getElementById('range');
 		 	erasure = document.getElementById('Erasure');
 
-		 	range.addEventListener('mousedown', function(){
+		 	range.addEventListener('mousemove', function(){
 		 		inSM.value = range.value;
 		 		who = false;
 		 	});
 
-		 	inSM.addEventListener('mousedown', function(){
+		 	inSM.addEventListener('mousemove', function(){
 		 		range.value = inSM.value;
 		 		who = false;
 		 	});
