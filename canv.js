@@ -7,12 +7,13 @@ $('document').ready(function(){
 			isMouseDown = false;
 			cords = [];
 			sizeMouse = 5;
-			speedReplaing = 25;
+			speedReplaing = 30;
 			isMouseMove = false;
 			x = 7;
 			y = 110;
 			colors = [];
-			buttonTriger = 19;
+			nowColor = colors[19];
+			inputHEX = document.getElementById('input');
 
 		canv.width = window.innerWidth * 0.99;
 		canv.height = window.innerHeight * 0.835;
@@ -20,7 +21,7 @@ $('document').ready(function(){
 		//code
 		function sort(a){
 			 
-			 let b;
+			let b;
 
 			for (var i = 0; i < 21; i++) {
 				b = document.getElementById('CB' + i);
@@ -36,6 +37,8 @@ $('document').ready(function(){
 		//trigers on down
 		canv.addEventListener("mousedown", function(){
 			isMouseDown = true;
+			
+			
 		});
 
 		canv.addEventListener("mouseup", function(){
@@ -58,14 +61,15 @@ $('document').ready(function(){
 
 			if(isMouseMove && isMouseDown){
 
+				sizeMouse = inSM.value;
 				cords.push([e.clientX - x, e.clientY - y]);
-				ctx.strokeStyle = colors[buttonTriger];
+				ctx.strokeStyle = nowColor;
 				ctx.lineWidth = sizeMouse * 2;
 				ctx.lineTo(e.clientX - x, e.clientY - y);
 				ctx.stroke();
 				ctx.beginPath();	
 				
-				ctx.fillStyle = colors[buttonTriger];
+				ctx.fillStyle = nowColor;
 				ctx.arc(e.clientX - x, e.clientY - y, sizeMouse, 0, Math.PI * 2);
 				ctx.fill();
 
@@ -77,7 +81,9 @@ $('document').ready(function(){
 	
 		//save pikch
 		function save() {
-			localStorage.setItem('cords', JSON.stringify(cords));
+			localStorage.setItem( 'cords', JSON.stringify(cords) );
+			// localStorage.setItem('colorCords', JSON.stringify(buttonTriger));
+
 		}
 		//clear sheet
 		 function clear(a) {
@@ -86,8 +92,8 @@ $('document').ready(function(){
 		 	ctx.fillRect(0, 0, canv.width, canv.height);
 
 		 	ctx.beginPath();
-		 	ctx.fillStyle = colors[buttonTriger];
-		 	
+		 	ctx.fillStyle = 'black';
+
 		 	if( a ){
 		 		cords = [];
 		 	}
@@ -106,7 +112,7 @@ $('document').ready(function(){
 		 			}
 
 		 			var 
-		 				crd = cords.shift(),
+		 				crd = cords.shift();
 		 				e = {
 		 					clientX: crd["0"],
 		 					clientY: crd["1"]
@@ -115,6 +121,7 @@ $('document').ready(function(){
 		 		
 		 		//cords.push([e.clientX, e.clientY]);
 				isMouseDown = false;
+				ctx.strokeStyle = 'black';
 				ctx.lineTo(e.clientX, e.clientY);
 				ctx.stroke();
 				ctx.beginPath();
@@ -126,6 +133,25 @@ $('document').ready(function(){
 				ctx.moveTo(e.clientX, e.clientY);
 		 		}, speedReplaing);
 		 }
+
+		
+		 var 
+		 	BClear = document.getElementById('crearButton');
+		 	BReplay = document.getElementById('repalayButton');
+		 	BCopy = document.getElementById('copyButton');
+		 	inSM = document.getElementById('inputSM');
+		 	range = document.getElementById('range');
+		 	erasure = document.getElementById('Erasure');
+
+		 	range.addEventListener('mousedown', function(){
+		 		inSM.value = range.value;
+		 		who = false;
+		 	});
+
+		 	inSM.addEventListener('mousedown', function(){
+		 		range.value = inSM.value;
+		 		who = false;
+		 	});
 
 		document.addEventListener("keydown", function(e){
 
@@ -146,41 +172,40 @@ $('document').ready(function(){
 				case 82:
 					console.log("Repalaing...");
 			
-					cords = JSON.parse(localStorage.getItem('cords'));
-
-					clear(false);
+					cords = JSON.parse( localStorage.getItem('cords') );
+					
+					clear();
 					replay();
 					break;
-				//increase sizeMouse
-				case 38:
-					sizeMouse++;
-					break;
-				//reduce sizeMouse
-				case 40:
-				
-					if(sizeMouse > 1){
-						sizeMouse--;
-					}
-				
-					break;
-				//increase speed replaing
-				case 37:
-				
-					if(speedReplaing <= 100){
-						speedReplaing++;
-					}
-				
-					break;
-				//reduce speed repaling
-				case 39:
+				//get value HEX
+				case 13:
+					let i = inputHEX.value;
+					
+					colors.push( i );
+					nowColor = i;
 
-					if(speedReplaing > 1){
-						speedReplaing--;
-					}
-
-					break;
 			}
+		});
 
 
+		erasure.addEventListener('mousedown', function(){
+			nowColor = 'white';
+		});
+
+		BReplay.addEventListener('mouseup', function(){
+
+					cords = JSON.parse( localStorage.getItem('cords') );
+					
+					clear();
+					replay();
+		
+		});
+
+		BCopy.addEventListener('mouseup', function(){
+			save();
+		});
+		
+		BClear.addEventListener('mouseup', function(){
+			clear( true );
 		});
 });

@@ -14,54 +14,54 @@
 	<div id = "interface">
 		
 
-		<button id="CB0" class = "colorButton firstRow" style = "background-color: #990000" onclick = "buttonTriger = 0;"></button>
-		<button id="CB1" class = "colorButton" style = "background-color: #660000" onclick = "buttonTriger = 1;"></button>
-		<button id="CB2" class = "colorButton" style = "background-color: #FF6633" onclick = "buttonTriger = 2;"></button>
-		<button id="CB3" class = "colorButton" style = "background-color: #FF6600" onclick = "buttonTriger = 3;"></button>
-		<button id="CB4" class = "colorButton" style = "background-color: #006600" onclick = "buttonTriger = 4;"></button>
-		<button id="CB5" class = "colorButton" style = "background-color: #009900" onclick = "buttonTriger = 5;"></button>
-		<button id="CB6" class = "colorButton" style = "background-color: #FFCC00" onclick = "buttonTriger = 6;"></button>
+		<button id="CB0" class = "colorButton firstRow" style = "background-color: #990000" onclick = "nowColor = colors[0]"></button>
+		<button id="CB1" class = "colorButton" style = "background-color: #660000" onclick = "nowColor = colors[1];"></button>
+		<button id="CB2" class = "colorButton" style = "background-color: #FF6633" onclick = "nowColor = colors[2];"></button>
+		<button id="CB3" class = "colorButton" style = "background-color: #FF6600" onclick = "nowColor = colors[3];"></button>
+		<button id="CB4" class = "colorButton" style = "background-color: #006600" onclick = "nowColor = colors[4];"></button>
+		<button id="CB5" class = "colorButton" style = "background-color: #009900" onclick = "nowColor = colors[5];"></button>
+		<button id="CB6" class = "colorButton" style = "background-color: #FFCC00" onclick = "nowColor = colors[6];"></button>
 		
 		<b id = "text">HEX</b>
 		<b id = "text">SM</b>
 		
-		<button  class = "buton" style = "margin-left: 80px;">Crear</button>
-		<button  class = "buton" style = "margin-left: 160px;">Copy</button>
-		<button  class = "buton" style = "margin-left: 240px;">Replay</button>
+		<button id = "crearButton" class = "buton" style = "margin-left: 80px;">Crear</button>
+		<button id = "copyButton"  class = "buton" style = "margin-left: 160px;">Copy</button>
+		<button  id = "repalayButton" class = "buton" style = "margin-left: 240px;">Replay</button>
 
 		<button id = "Erasure"><img src="img/erasuse.jpg" height="49px" width = "49px"></button>
 
-		<button class = "speedButton" id = "b_025" style = "margin-left: 340px;">0.25</button>
-		<button class = "speedButton" id = "b_05" style = "margin-left: 390px;">0.5</button>
-		<button class = "speedButton" id = "b_1" style = "margin-left: 440px;">1</button>
+		<button class = "speedButton" id = "b_025" style = "margin-left: 340px;" onclick = "speedReplaing = 90;">0.25</button>
+		<button class = "speedButton" id = "b_05" style = "margin-left: 390px;"onclick = "speedReplaing = 60;">0.5</button>
+		<button class = "speedButton" id = "b_1" style = "margin-left: 440px;" onclick = "speedReplaing = 30;">1</button>
 
-		<input type = "range" id = "range" value = "10" max = "80" min = "1" step = "2">
+		<input type = "range" id = "range" value = "10" max = "100" min = "1" step = "2">
 		<br>
 
-		<button id="CB7" class = "colorButton" style = "background-color: #FFFF99" onclick = "buttonTriger = 7;"></button>
-		<button id="CB8" class = "colorButton firstRow" style = "background-color: #0000FF" onclick = "buttonTriger = 8;"></button>
-		<button id="CB9" class = "colorButton" style = "background-color: #3399FF" onclick = "buttonTriger = 9;"> </button>
-		<button id="CB10" class = "colorButton" style = "background-color: #3f8883" onclick = "buttonTriger = 10;"></button>
-		<button id="CB11" class = "colorButton" style = "background-color: #d8bfd8" onclick = "buttonTriger = 11;"></button>
-		<button id="CB12" class = "colorButton" style = "background-color: #FF9999" onclick = "buttonTriger = 12;"></button>
-		<button id="CB13" class = "colorButton" style = "background-color: #FFFF66" onclick = "buttonTriger = 13;"></button>
+		<button id="CB7" class = "colorButton" style = "background-color: #FFFF99" onclick = "nowColor = colors[7];"></button>
+		<button id="CB8" class = "colorButton firstRow" style = "background-color: #0000FF" onclick = "nowColor = colors[8];"></button>
+		<button id="CB9" class = "colorButton" style = "background-color: #3399FF" onclick = "nowColor = colors[9];"> </button>
+		<button id="CB10" class = "colorButton" style = "background-color: #3f8883" onclick = "nowColor = colors[10];"></button>
+		<button id="CB11" class = "colorButton" style = "background-color: #d8bfd8" onclick = "nowColor = colors[11];"></button>
+		<button id="CB12" class = "colorButton" style = "background-color: #FF9999" onclick = "nowColor = colors[12];"></button>
+		<button id="CB13" class = "colorButton" style = "background-color: #FFFF66" onclick = "nowColor = colors[13];"></button>
 		
 		<input type="text" name="colorInHEX" value = "#" id = "input">
-		<input type="number" name="inputSM" value = "10" id = "inputSm">
+		<input type="number" name="inputSM" value = "10" id = "inputSM" min = "1" max = "100">
 
-		<button class = "speedButton" id = "b_025" style = "margin-left: 332px; margin-top: 10px;">1.5</button>
-		<button class = "speedButton" id = "b_05" style = "margin-left:  382px; margin-top: 10px;">2</button>
-		<button class = "speedButton" id = "b_1" style = "margin-left: 432px;  margin-top: 10px;">3</button>
+		<button class = "speedButton" id = "b_025" style = "margin-left: 332px; margin-top: 10px;" onclick = "speedReplaing = 20;">1.5</button>
+		<button class = "speedButton" id = "b_05" style = "margin-left:  382px; margin-top: 10px;" onclick = "speedReplaing = 15;">2</button>
+		<button class = "speedButton" id = "b_1" style = "margin-left: 432px;  margin-top: 10px;" onclick = "speedReplaing = 7.5;">3</button>
 
 		<br>
 
-		<button id="CB14" class = "colorButton" style = "background-color: #dc9d00" onclick = "buttonTriger = 14;"></button>
-		<button id="CB15" class = "colorButton" style = "background-color: #ffa343" onclick = "buttonTriger = 15;"></button>
-		<button id="CB16" class = "colorButton" style = "background-color: #cc0605" onclick = "buttonTriger = 16;"> </button>
-		<button id="CB17" class = "colorButton" style = "background-color: #666666" onclick = "buttonTriger = 17;"></button>
-		<button id="CB18" class = "colorButton" style = "background-color: #333333" onclick = "buttonTriger = 18;"></button>
-		<button id="CB19" class = "colorButton" style = "background-color: #000000" onclick = "buttonTriger = 19;"></button>
-		<button id="CB20" class = "colorButton" style = "background-color: #FFFFFF" onclick = "buttonTriger = 20;"></button>
+		<button id="CB14" class = "colorButton" style = "background-color: #dc9d00" onclick = "nowColor = colors[14];"></button>
+		<button id="CB15" class = "colorButton" style = "background-color: #ffa343" onclick = "nowColor = colors[15];"></button>
+		<button id="CB16" class = "colorButton" style = "background-color: #cc0605" onclick = "nowColor = colors[16];"> </button>
+		<button id="CB17" class = "colorButton" style = "background-color: #666666" onclick = "nowColor = colors[17];"></button>
+		<button id="CB18" class = "colorButton" style = "background-color: #333333" onclick = "nowColor = colors[18];"></button>
+		<button id="CB19" class = "colorButton" style = "background-color: #000000" onclick = "nowColor = colors[19];"></button>
+		<button id="CB20" class = "colorButton" style = "background-color: #FFFFFF" onclick = "nowColor = colors[20];"></button>
 
 		
 		
