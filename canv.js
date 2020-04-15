@@ -151,6 +151,7 @@ $('document').ready(function(){
 		 	inSM.addEventListener('mousemove', function(){
 		 		range.value = inSM.value;
 		 		who = false;
+		 		
 		 	});
 
 		document.addEventListener("keydown", function(e){
