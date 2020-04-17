@@ -121,6 +121,7 @@ $('document').ready(function(){
 		 		
 		 		//cords.push([e.clientX, e.clientY]);
 				isMouseDown = false;
+				isMouseMove = false;
 				ctx.strokeStyle = 'black';
 				ctx.lineTo(e.clientX, e.clientY);
 				ctx.stroke();
@@ -144,7 +145,7 @@ $('document').ready(function(){
 		 	erasure = document.getElementById('Erasure');
 
 		 	range.addEventListener('mousemove', function(){
-		 		inSM.value = range.value;
+		 		inSM.value = range.value - 1;
 		 		who = false;
 		 	});
 
